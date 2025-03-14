@@ -22,7 +22,7 @@
                             <img src="./assets/Yogurt.png">
                             <h3>Yogurt</h3>
                             <p>$1.00</p>
-                            <button onclick="addToCart('Yogurt', 1.00, this)">Add to cart</button>
+                            <button id="addYogurt" onclick="addToCart('Yogurt', 1.00, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -31,7 +31,7 @@
                             <img src="./assets/DietYogurt.png">
                             <h3>Diet Yogurt</h3>
                             <p>$1.25</p>
-                            <button onclick="addToCart('Diet Yogurt', 1.25, this)">Add to cart</button>
+                            <button id="addDietYogurt" onclick="addToCart('Diet Yogurt', 1.25, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -40,7 +40,7 @@
                             <img src="./assets/FatYogurt.png">
                             <h3>Fat Yogurt</h3>
                             <p>$1.50</p>
-                            <button onclick="addToCart('Fat Yogurt', 1.50, this)">Add to cart</button>
+                            <button id="addFatYogurt" onclick="addToCart('Fat Yogurt', 1.50, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -49,7 +49,7 @@
                             <img src="./assets/SugarFreeYogurt.png">
                             <h3>Sugar Free Yogurt</h3>
                             <p>$0.75</p>
-                            <button onclick="addToCart('Sugar Free Yogurt', 0.75, this)">Add to cart</button>
+                            <button id="addSugarFreeYogurt" onclick="addToCart('Sugar Free Yogurt', 0.75, this)">Add to cart</button>
                         </div>
                     </td>
                 </tr>
@@ -60,7 +60,7 @@
                             <img src="./assets/SugarFullYogurt.png">
                             <h3>Sugar Full Yogurt</h3>
                             <p>$9.99</p>
-                            <button onclick="addToCart('Sugar Full Yogurt', 9.99, this)">Add to cart</button>
+                            <button id="addSugarFullYogurt" onclick="addToCart('Sugar Full Yogurt', 9.99, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -69,7 +69,7 @@
                             <img src="./assets/OrganicYogurt.png">
                             <h3>Organic Yogurt</h3>
                             <p>$1.99</p>
-                            <button onclick="addToCart('Organic Yogurt', 1.99, this)">Add to cart</button>
+                            <button id="addOrganicYogurt" onclick="addToCart('Organic Yogurt', 1.99, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -78,7 +78,7 @@
                             <img src="./assets/InorganicYogurt.png">
                             <h3>Inorganic Yogurt</h3>
                             <p>$0.01</p>
-                            <button onclick="addToCart('Inorganic Yogurt', 0.01, this)">Add to cart</button>
+                            <button id="addInorganicYogurt" onclick="addToCart('Inorganic Yogurt', 0.01, this)">Add to cart</button>
                         </div>
                     </td>
                     <td style="width: 10%;">&nbsp;</td>
@@ -87,7 +87,7 @@
                             <img src="./assets/DigitalYogurt.png">
                             <h3>Digital Yogurt</h3>
                             <p>$1.64</p>
-                            <button onclick="addToCart('Digital Yogurt', 1.64, this)">Add to cart</button>
+                            <button id="addDigitalYogurt" onclick="addToCart('Digital Yogurt', 1.64, this)">Add to cart</button>
                         </div>
                     </td>
                 </tr>
@@ -96,15 +96,27 @@
 
         <script>
             function addToCart(name, price, button) {
-                // Add to sessionStorage
                 let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
                 cart.push({ name, price });
                 sessionStorage.setItem('cart', JSON.stringify(cart));
-                
-                // Change button text to "Added"
+
                 button.textContent = 'Added';
-                button.disabled = true; // Disable the button to avoid adding it multiple times
+                button.disabled = true;
             }
+
+            function disableAddedButtons() {
+                let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+                cart.forEach(item => {
+                    let buttonId = "add" + item.name.replace(/\s/g, '')
+                    let button = document.getElementById(buttonId);
+                    if (button) {
+                        button.textContent = 'Added';
+                        button.disabled = true;
+                    }
+                });
+            }
+            window.onload = disableAddedButtons;
         </script>
     </body>
 </html>
