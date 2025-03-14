@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MattieMart</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" type="image/x-icon" href="./assets/shopping-cart.png">
+    </head>
+    <body>
+        <table style="width: 100%; background-color: palevioletred; box-shadow: 5px 5px 5px rosybrown;">
+            <tr>
+                <td><h1>&nbsp;MattieMart</h1></td>
+                <td style="width: 80%;">&nbsp;</td>
+                <td><a href="cart.html"><img src="./assets/shopping-cart.png" width="50" height="50"></a></td>
+            </tr>
+        </table>
+        <br>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <table style="width: 90%;">
+                <tr>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/Yogurt.png">
+                            <h3>Yogurt</h3>
+                            <p>$1.00</p>
+                            <button onclick="addToCart('Yogurt', 1.00, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/DietYogurt.png">
+                            <h3>Diet Yogurt</h3>
+                            <p>$1.25</p>
+                            <button onclick="addToCart('Diet Yogurt', 1.25, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/FatYogurt.png">
+                            <h3>Fat Yogurt</h3>
+                            <p>$1.50</p>
+                            <button onclick="addToCart('Fat Yogurt', 1.50, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/SugarFreeYogurt.png">
+                            <h3>Sugar Free Yogurt</h3>
+                            <p>$0.75</p>
+                            <button onclick="addToCart('Sugar Free Yogurt', 0.75, this)">Add to cart</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/SugarFullYogurt.png">
+                            <h3>Sugar Full Yogurt</h3>
+                            <p>$9.99</p>
+                            <button onclick="addToCart('Sugar Full Yogurt', 9.99, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/OrganicYogurt.png">
+                            <h3>Organic Yogurt</h3>
+                            <p>$1.99</p>
+                            <button onclick="addToCart('Organic Yogurt', 1.99, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/InorganicYogurt.png">
+                            <h3>Inorganic Yogurt</h3>
+                            <p>$0.01</p>
+                            <button onclick="addToCart('Inorganic Yogurt', 0.01, this)">Add to cart</button>
+                        </div>
+                    </td>
+                    <td style="width: 10%;">&nbsp;</td>
+                    <td>
+                        <div class="product">
+                            <img src="./assets/DigitalYogurt.png">
+                            <h3>Digital Yogurt</h3>
+                            <p>$1.64</p>
+                            <button onclick="addToCart('Digital Yogurt', 1.64, this)">Add to cart</button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div><br>
+
+        <script>
+            function addToCart(name, price, button) {
+                // Add to sessionStorage
+                let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+                cart.push({ name, price });
+                sessionStorage.setItem('cart', JSON.stringify(cart));
+                
+                // Change button text to "Added"
+                button.textContent = 'Added';
+                button.disabled = true; // Disable the button to avoid adding it multiple times
+            }
+        </script>
+    </body>
+</html>

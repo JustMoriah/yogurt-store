@@ -1,0 +1,59 @@
+body {
+    height: 100%;
+    width: 100%;
+    background-color: lightpink;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    color: floralwhite;
+}
+
+button {
+    padding: 10px;
+    background-color: blueviolet;
+    border-radius: 5px;
+    border: none;
+    color: floralwhite;
+}
+
+button:hover {
+    box-shadow: 3px 3px 3px rosybrown;
+    background-color: rgb(149, 46, 247);
+    color: white;
+}
+
+.product {
+    height: fit-content;
+    width: fit-content;
+    background-color: plum;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 3px 3px 3px rosybrown;
+    text-align: center;
+}
+
+#cartTable {
+    width: 90%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: lightskyblue;
+}
+
+#cartTable tr, #cartTable td, #cartTable th {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid blue;
+}
+
+#cartTable th {
+    background-color: aquamarine;
+}
+
+#totalPrice {
+    font-weight: bold;
+    margin-top: 20px;
+}
